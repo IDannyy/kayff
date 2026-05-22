@@ -7,10 +7,10 @@ TOKEN = os.environ["BOT_TOKEN"]
 
 # Прайс — цена: (название, период)
 PRICE_MAP = {
-    5.6:   ("YouTube",          "3 month"),
-    12.7:  ("YouTube",          "12 month"),
+    6.1:   ("YouTube",          "3 month"),
+    18.0:  ("YouTube",          "12 month"),
     2.5:   ("Spotify India",    "Standard 1m"),
-    18.0:  ("Spotify India",    "Standard 12m"),
+    17.5:  ("Spotify India",    "Standard 12m"),
     3.7:   ("Spotify India",    "Platinum 1m"),
     18.5:  ("Spotify India",    "Platinum 4m 15d"),
     1.8:   ("Spotify India",    "Student 1m"),
@@ -24,18 +24,11 @@ PRICE_MAP = {
 }
 
 def parse_message(text: str) -> dict:
-    """
-    Парсит строки вида:
-      8,7\tКайф
-      12.7\tКайф
-    Возвращает словарь {цена: количество} только для строк с поставщиком Кайф.
-    """
     counts = {}
     for line in text.splitlines():
         line = line.strip()
         if not line:
             continue
-        # Ищем паттерн: число (с точкой или запятой) + пробел/таб + Кайф
         match = re.match(r'^([\d][0-9]*[.,][0-9]+|[0-9]+)\s+Кайф\b', line, re.IGNORECASE)
         if not match:
             continue
@@ -51,8 +44,7 @@ def format_response(counts: dict) -> str:
     if not counts:
         return "❌ Не найдено ни одной строки формата «цена Кайф»."
 
-    # Группируем по сервису для красивого вывода
-    service_lines = {}   # {сервис: [(период, кол-во, цена)]}
+    service_lines = {}
     unknown = []
 
     for price, qty in sorted(counts.items()):

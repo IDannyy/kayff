@@ -22,14 +22,13 @@ PRICE_FILE = "prices.json"
 
 DEFAULT_PRICES = {
     "kayf": {
-        "6.1":   ["YouTube",       "3 month"],
-        "18.0":  ["YouTube",       "12 month"],
+        "6.0":   ["YouTube",       "3 month"],
+        "17.8":  ["YouTube",       "12 month"],
         "2.5":   ["Spotify India", "Standard 1m"],
-        "17.5":  ["Spotify India", "Standard 12m"],
+        "17.0":  ["Spotify India", "Standard 12m"],
         "3.7":   ["Spotify India", "Platinum 1m"],
         "18.5":  ["Spotify India", "Platinum 4m 15d"],
         "1.8":   ["Spotify India", "Student 1m"],
-        "6.0":   ["Gamma AI",      "Plus"],
         "15.0":  ["Gamma AI",      "Pro"],
         "10.1":  ["Suno AI",       "Pro plan 1m"],
         "29.3":  ["Suno AI",       "Premier plan 1m"],
